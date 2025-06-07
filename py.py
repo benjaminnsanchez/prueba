@@ -16,6 +16,11 @@ for i in resultado:
     dicProductos.append({"nombre": i[1], "precio": i[2],  "stock": i[3]})
 print(dicProductos)
 app = FastAPI()  
+app.add_middleware(CORSMiddleware,
+                  allow_origins= origins,
+                   allow_credentials= True,
+                    allow_methods= ["*"],
+                      allow_headers= ["*"])
 @app.get("/")
 def main():
     return dicProductos
